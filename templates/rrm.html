@@ -2,23 +2,26 @@
 
 {% block body%}
 
+<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+<link rel="stylesheet" href="{% static 'assets/css/util.css' %}" />
+<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+
 
 <div class="tyn-content tyn-content-full-height tyn-chatbot tyn-chatbot-page">
   <div class="tyn-aside tyn-aside-base">
     <div class="tyn-aside-head">
       <div class="tyn-aside-head-text">
-        <h3 class="tyn-aside-title tyn-title">Chat Archive</h3>
+        <h3 class="tyn-aside-title tyn-title">Sentiment</h3>
         {% for chat_MyImage in chat_MyImage %}
         <img src="{{chat_MyImage.iamge_file.url}}" height="100px" width="100px" />
         {% endfor %}
 
         {% for chat_index in chat_index %}
-        <h3 class="tyn-aside-title tyn-title">Chat Archive</h3>
+        <h3 class="tyn-aside-title tyn-title">Sentiment</h3>
         {{chat_index.json_file.url}}
         {% endfor %}
         
         
-        <span class="tyn-subtext">{{chatBodyscount}}+ Conversations </span>
 
       </div>
       <div class="tyn-aside-head-tools">
@@ -50,9 +53,8 @@
     <!-- .tyn-aside-head -->
     <div class="tyn-aside-body" data-simplebar>
       <ul class="tyn-aside-list">
-        {% for chatTitle in chatTitles %}
-        <li class="tyn-aside-item tyn-aside-item-bubbly js-toggle-main">
-          <a href="{% url 'dynamic' chatTitle.id %}">
+        <li class="tyn-aside-item tyn-aside-item-bubbly js-toggle-main active">
+          <a href="#">
             
           <div class="tyn-media-group">
             <div class="tyn-media tyn-size-sm">
@@ -70,15 +72,13 @@
                 />
               </svg>
             </div>
-            <a href="{% url 'dynamic' chatTitle.id %}" >
             <div class="tyn-media-col">
-              <div class="content">{{ chatTitle.title }}</div>
+              <div class="content">what can you do for me ?</div>
             </div>
-          </a>
             <div class="tyn-media-option">
               <ul class="tyn-media-option-list">
                 <li>
-                  <button class="btn btn-icon btn-md btn-pill btn-light" onclick="window.location.href='{% url 'dynamic_delete' chatTitle.id %}'">
+                  <button class="btn btn-icon btn-md btn-pill btn-light">
                     <!-- trash -->
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -103,7 +103,7 @@
           </div>
         </a>
         </li>
-        {% endfor %}
+      
         <!-- .tyn-aside-item -->
       </ul>
     </div>
@@ -348,19 +348,22 @@
           //var r_button_id = $("#report_id").attr("data-id");
 
           var user_input = $("#tynChatInput").val()
+          console.log(user_input);
           $("#tynChatInput").val("");
           //var ff_button_id = $("#report_id").data("value").val();
+          firstValue = 0;
 
           console.log('hhh');
           //console.log(r_button_id);
           //console.log(ff_button_id);
           // Send an AJAX request to the Django view
           $.ajax({
-            url: "{% url 'chat_add' %}",
+            url: "{% url 'sentiment_add' %}",
             type: 'get',
             dataType: 'json',
             data: {
               offset: user_input,
+              firstValue: firstValue
             },
 
             success: function(response) {

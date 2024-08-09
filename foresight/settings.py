@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "accounts",
-    "myapp"
+    "myapp",
+    "chotbotapi",
+    "rest_framework",
 ]
 
 MIDDLEWARE = [

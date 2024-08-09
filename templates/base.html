@@ -17,7 +17,7 @@
         <nav class="tyn-appbar">
             <div class="tyn-appbar-wrap">
                 <div class="tyn-appbar-logo">
-                    <a class="tyn-logo" href="index.html">
+                    <a class="tyn-logo" href="{% url 'welcome' %}">
                         <img width="120" height="70"  src="{% static 'images/foresight.png' %}" alt="Foresightbyte Logo">
 
                     </a>
@@ -172,6 +172,10 @@
     </div>
     <script src="{% static 'assets/js/bundle8b75.js' %}"></script>
     <script src="{% static 'assets/js/app8b75.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    {% block js %}
+    {% endblock %}
 </body>
 
 
