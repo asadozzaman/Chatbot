@@ -1,11 +1,9 @@
 from django.shortcuts import render
 import time
-from django.http import StreamingHttpResponse
 import json
 # Create your views here.
 import google.generativeai as genai
 from django.http import JsonResponse
-from django.http import HttpResponseRedirect
 from myapp.models import ChatBody, ChatTitle
 
 genai.configure(api_key="AIzaSyBRAqorLHlWe3K7SHr8vf7LGHqBveIDm-s")
