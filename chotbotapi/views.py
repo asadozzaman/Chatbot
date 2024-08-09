@@ -8,12 +8,8 @@ from .serializers import QuestionSerializer
 
 
 from django.shortcuts import render
-import time
-from django.http import StreamingHttpResponse
-import json
 # Create your views here.
 import google.generativeai as genai
-from django.http import JsonResponse
 
 genai.configure(api_key="AIzaSyBRAqorLHlWe3K7SHr8vf7LGHqBveIDm-s")
 
